@@ -47,6 +47,7 @@ namespace PoorMansTSqlFormatterLib.Formatters
 			ExpandInLists = true;
 			NewClauseLineBreaks = 1;
 			NewStatementLineBreaks = 2;
+            LowercaseTypeNames = false;
 		}
 
         //Doesn't particularly need to be lazy-loaded, and doesn't need to be threadsafe.
@@ -145,6 +146,7 @@ namespace PoorMansTSqlFormatterLib.Formatters
 		public bool ExpandInLists { get; set; }
 		public int NewClauseLineBreaks { get; set; }
 		public int NewStatementLineBreaks { get; set; }
+        public bool LowercaseTypeNames { get; set; }
 
     }
 }

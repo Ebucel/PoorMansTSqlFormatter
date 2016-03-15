@@ -598,8 +598,14 @@ namespace PoorMansTSqlFormatterLib.Formatters
                     state.WordSeparatorExpected = true;
                     break;
 
-                case SqlXmlConstants.ENAME_OTHERKEYWORD:
                 case SqlXmlConstants.ENAME_DATATYPE_KEYWORD:
+                    WhiteSpace_SeparateWords(state);
+                    state.SetRecentKeyword(contentElement.InnerText);
+                    state.AddOutputContent(FormatTypeName(contentElement.InnerText), Interfaces.SqlHtmlConstants.CLASS_KEYWORD);
+                    state.WordSeparatorExpected = true;
+                    break;
+
+                case SqlXmlConstants.ENAME_OTHERKEYWORD:
                     WhiteSpace_SeparateWords(state);
                     state.SetRecentKeyword(contentElement.InnerText);
                     state.AddOutputContent(FormatKeyword(contentElement.InnerText), Interfaces.SqlHtmlConstants.CLASS_KEYWORD);
@@ -738,6 +744,20 @@ namespace PoorMansTSqlFormatterLib.Formatters
             return remainder;
         }
 
+        private string FormatTypeName(string keyword)
+        {
+            if (!Options.LowercaseTypeNames)
+                return FormatKeyword(keyword);
+            else
+            {
+                string outputKeyword;
+                if (!KeywordMapping.TryGetValue(keyword, out outputKeyword))
+                    outputKeyword = keyword;
+
+                return outputKeyword.ToLowerInvariant();
+            } 
+        }
+
 
         private string FormatKeyword(string keyword)
         {
@@ -748,7 +768,7 @@ namespace PoorMansTSqlFormatterLib.Formatters
             if (Options.UppercaseKeywords)
                 return outputKeyword.ToUpperInvariant();
             else
-                return outputKeyword.ToLowerInvariant();
+                return outputKeyword; 
         }
 
         private string FormatOperator(string operatorValue)
