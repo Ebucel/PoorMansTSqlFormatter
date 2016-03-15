@@ -83,6 +83,7 @@ namespace PoorMansTSqlFormatterLib.Formatters
 				else if (key == "ExpandInLists") ExpandInLists = Convert.ToBoolean(value);
 				else if (key == "NewClauseLineBreaks") NewClauseLineBreaks = Convert.ToInt32(value);
 				else if (key == "NewStatementLineBreaks") NewStatementLineBreaks = Convert.ToInt32(value);
+                else if (key == "LowercaseTypeNames") LowercaseTypeNames = Convert.ToBoolean(value);
 				else throw new ArgumentException("Unknown option: " + key);
             }
 
@@ -111,6 +112,7 @@ namespace PoorMansTSqlFormatterLib.Formatters
 			if (ExpandInLists != _defaultOptions.ExpandInLists) overrides.Add("ExpandInLists", ExpandInLists.ToString());
 			if (NewClauseLineBreaks != _defaultOptions.NewClauseLineBreaks) overrides.Add("NewClauseLineBreaks", NewClauseLineBreaks.ToString());
 			if (NewStatementLineBreaks != _defaultOptions.NewStatementLineBreaks) overrides.Add("NewStatementLineBreaks", NewStatementLineBreaks.ToString());
+            if (LowercaseTypeNames != _defaultOptions.LowercaseTypeNames) overrides.Add("LowercaseTypeNames", LowercaseTypeNames.ToString());
 			NewStatementLineBreaks = 2;
     
             if (overrides.Count == 0) return string.Empty;

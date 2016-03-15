@@ -108,6 +108,7 @@ namespace PoorMansTSqlFormatterPluginShared
             chk_UppercaseKeywords.Checked = options.UppercaseKeywords;
             chk_SpaceAfterExpandedComma.Checked = options.SpaceAfterExpandedComma;
             chk_StandardizeKeywords.Checked = options.KeywordStandardization;
+            chk_LowercaseTypeNames.Checked = options.LowercaseTypeNames;
 
             if (_supportsHotkey) txt_Hotkey.Text = (string)_settings["Hotkey"];
         }
@@ -129,7 +130,8 @@ namespace PoorMansTSqlFormatterPluginShared
 				TrailingCommas = chk_TrailingCommas.Checked,
                 BreakJoinOnSections = chk_BreakJoinOnSections.Checked,
                 UppercaseKeywords = chk_UppercaseKeywords.Checked,
-                KeywordStandardization = chk_StandardizeKeywords.Checked
+                KeywordStandardization = chk_StandardizeKeywords.Checked,
+                LowercaseTypeNames = chk_LowercaseTypeNames.Checked,
             };
             
             if (_supportsHotkey) _settings["Hotkey"] = txt_Hotkey.Text;
