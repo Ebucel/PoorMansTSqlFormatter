@@ -153,17 +153,23 @@ namespace PoorMansTSqlFormatterLib.Formatters
                 case SqlXmlConstants.ENAME_SQL_STATEMENT:
                     WhiteSpace_SeparateStatements(contentElement, state);
                     state.ResetKeywords();
-
+                                      
                     if (Options.AddMissingStatementTerminators)
                     {
-                        XmlNodeList check = contentElement.SelectNodes(".//" + SqlXmlConstants.ENAME_SEMICOLON);
-                        if (check.Count == 0)
+                        XmlNodeList childSqlStatements = contentElement.SelectNodes(".//" + SqlXmlConstants.ENAME_SQL_STATEMENT);
+
+                        if (childSqlStatements.Count == 0)
                         {
-                            XmlNode lastClause = contentElement.LastChild;
-                            XmlElement terminator = contentElement.OwnerDocument.CreateElement(SqlXmlConstants.ENAME_SEMICOLON);
-                            terminator.InnerText = ";";
-                            lastClause.AppendChild(terminator);
+                            XmlNodeList existingStatementTerminators = contentElement.SelectNodes(".//" + SqlXmlConstants.ENAME_SEMICOLON);
+                            if (existingStatementTerminators.Count == 0)
+                            {
+                                XmlNode lastClause = contentElement.LastChild;
+                                XmlElement terminator = contentElement.OwnerDocument.CreateElement(SqlXmlConstants.ENAME_SEMICOLON);
+                                terminator.InnerText = ";";
+                                lastClause.AppendChild(terminator);
+                            }
                         }
+                        
                     }
 
                     ProcessSqlNodeList(contentElement.SelectNodes("*"), state);
@@ -204,8 +210,7 @@ namespace PoorMansTSqlFormatterLib.Formatters
                 case SqlXmlConstants.ENAME_SAVE_TRANSACTION:
                 case SqlXmlConstants.ENAME_COMMIT_TRANSACTION:
                 case SqlXmlConstants.ENAME_ROLLBACK_TRANSACTION:
-                case SqlXmlConstants.ENAME_CONTAINER_OPEN:
-                case SqlXmlConstants.ENAME_CONTAINER_CLOSE:
+                case SqlXmlConstants.ENAME_CONTAINER_OPEN:                
                 case SqlXmlConstants.ENAME_WHILE_LOOP:
                 case SqlXmlConstants.ENAME_IF_STATEMENT:
                 case SqlXmlConstants.ENAME_SELECTIONTARGET:
@@ -215,6 +220,18 @@ namespace PoorMansTSqlFormatterLib.Formatters
                 case SqlXmlConstants.ENAME_PERMISSIONS_DETAIL:
                 case SqlXmlConstants.ENAME_MERGE_CLAUSE:
                 case SqlXmlConstants.ENAME_MERGE_TARGET:
+                    ProcessSqlNodeList(contentElement.SelectNodes("*"), state);
+                    break;
+
+                case SqlXmlConstants.ENAME_CONTAINER_CLOSE:
+                    if (Options.AddMissingStatementTerminators)
+                    {
+                        XmlNode lastElement = contentElement.LastChild;
+                        XmlElement terminator = contentElement.OwnerDocument.CreateElement(SqlXmlConstants.ENAME_SEMICOLON);
+                        terminator.InnerText = ";";
+                        lastElement.AppendChild(terminator);
+                    }
+                                                                   
                     ProcessSqlNodeList(contentElement.SelectNodes("*"), state);
                     break;
 
