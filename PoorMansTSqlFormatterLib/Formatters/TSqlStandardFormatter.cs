@@ -226,10 +226,14 @@ namespace PoorMansTSqlFormatterLib.Formatters
                 case SqlXmlConstants.ENAME_CONTAINER_CLOSE:
                     if (Options.AddMissingStatementTerminators)
                     {
-                        XmlNode lastElement = contentElement.LastChild;
-                        XmlElement terminator = contentElement.OwnerDocument.CreateElement(SqlXmlConstants.ENAME_SEMICOLON);
-                        terminator.InnerText = ";";
-                        lastElement.AppendChild(terminator);
+                        XmlNodeList existingStatementTerminators = contentElement.SelectNodes(".//" + SqlXmlConstants.ENAME_SEMICOLON);
+                        if (existingStatementTerminators.Count == 0)
+                        {
+                            XmlNode lastClause = contentElement.LastChild;
+                            XmlElement terminator = contentElement.OwnerDocument.CreateElement(SqlXmlConstants.ENAME_SEMICOLON);
+                            terminator.InnerText = ";";
+                            lastClause.AppendChild(terminator);
+                        }
                     }
                                                                    
                     ProcessSqlNodeList(contentElement.SelectNodes("*"), state);
@@ -387,6 +391,19 @@ namespace PoorMansTSqlFormatterLib.Formatters
                 case SqlXmlConstants.ENAME_BEGIN_END_BLOCK:
                 case SqlXmlConstants.ENAME_TRY_BLOCK:
                 case SqlXmlConstants.ENAME_CATCH_BLOCK:
+
+                    if (Options.AddMissingStatementTerminators && contentElement.Name.Equals(SqlXmlConstants.ENAME_CATCH_BLOCK))
+                    {
+                        XmlNodeList existingStatementTerminators = contentElement.SelectNodes(".//" + SqlXmlConstants.ENAME_SEMICOLON);
+                        if (existingStatementTerminators.Count == 0)
+                        {
+                            XmlNode lastClause = contentElement.LastChild;
+                            XmlElement terminator = contentElement.OwnerDocument.CreateElement(SqlXmlConstants.ENAME_SEMICOLON);
+                            terminator.InnerText = ";";
+                            lastClause.AppendChild(terminator);
+                        }                        
+                    }
+
                     if (contentElement.ParentNode.Name.Equals(SqlXmlConstants.ENAME_SQL_CLAUSE)
                         && contentElement.ParentNode.ParentNode.Name.Equals(SqlXmlConstants.ENAME_SQL_STATEMENT)
                         && contentElement.ParentNode.ParentNode.ParentNode.Name.Equals(SqlXmlConstants.ENAME_CONTAINER_SINGLESTATEMENT)
