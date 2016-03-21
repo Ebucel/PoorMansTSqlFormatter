@@ -48,6 +48,7 @@ namespace PoorMansTSqlFormatterLib.Formatters
 			NewClauseLineBreaks = 1;
 			NewStatementLineBreaks = 2;
             LowercaseTypeNames = false;
+            AddMissingStatementTerminators = false;
 		}
 
         //Doesn't particularly need to be lazy-loaded, and doesn't need to be threadsafe.
@@ -84,6 +85,7 @@ namespace PoorMansTSqlFormatterLib.Formatters
 				else if (key == "NewClauseLineBreaks") NewClauseLineBreaks = Convert.ToInt32(value);
 				else if (key == "NewStatementLineBreaks") NewStatementLineBreaks = Convert.ToInt32(value);
                 else if (key == "LowercaseTypeNames") LowercaseTypeNames = Convert.ToBoolean(value);
+                else if (key == "AddMissingStatementTerminators") AddMissingStatementTerminators = Convert.ToBoolean(value);
 				else throw new ArgumentException("Unknown option: " + key);
             }
 
@@ -113,6 +115,7 @@ namespace PoorMansTSqlFormatterLib.Formatters
 			if (NewClauseLineBreaks != _defaultOptions.NewClauseLineBreaks) overrides.Add("NewClauseLineBreaks", NewClauseLineBreaks.ToString());
 			if (NewStatementLineBreaks != _defaultOptions.NewStatementLineBreaks) overrides.Add("NewStatementLineBreaks", NewStatementLineBreaks.ToString());
             if (LowercaseTypeNames != _defaultOptions.LowercaseTypeNames) overrides.Add("LowercaseTypeNames", LowercaseTypeNames.ToString());
+            if (AddMissingStatementTerminators != _defaultOptions.AddMissingStatementTerminators) overrides.Add("AddMissingStatementTerminators", AddMissingStatementTerminators.ToString());
 			NewStatementLineBreaks = 2;
     
             if (overrides.Count == 0) return string.Empty;
@@ -149,6 +152,7 @@ namespace PoorMansTSqlFormatterLib.Formatters
 		public int NewClauseLineBreaks { get; set; }
 		public int NewStatementLineBreaks { get; set; }
         public bool LowercaseTypeNames { get; set; }
+        public bool AddMissingStatementTerminators { get; set; }
 
     }
 }

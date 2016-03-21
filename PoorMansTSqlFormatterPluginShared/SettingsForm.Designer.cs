@@ -62,6 +62,7 @@ namespace PoorMansTSqlFormatterPluginShared
             this.chk_SpaceAfterExpandedComma = new System.Windows.Forms.CheckBox();
             this.chk_BreakJoinOnSections = new System.Windows.Forms.CheckBox();
             this.chk_StandardizeKeywords = new System.Windows.Forms.CheckBox();
+            this.chk_LowercaseTypeNames = new System.Windows.Forms.CheckBox();
             this.txt_IndentString = new System.Windows.Forms.TextBox();
             this.lbl_IndentString = new System.Windows.Forms.Label();
             this.lbl_IndentHint = new System.Windows.Forms.Label();
@@ -79,7 +80,7 @@ namespace PoorMansTSqlFormatterPluginShared
             this.lbl_StatementBreaks = new System.Windows.Forms.Label();
             this.txt_ClauseBreaks = new System.Windows.Forms.TextBox();
             this.lbl_ClauseBreaks = new System.Windows.Forms.Label();
-            this.chk_LowercaseTypeNames = new System.Windows.Forms.CheckBox();
+            this.chk_AddMissingStatementTerminators = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,6 +113,7 @@ namespace PoorMansTSqlFormatterPluginShared
             this.flowLayoutPanel1.Controls.Add(this.chk_BreakJoinOnSections);
             this.flowLayoutPanel1.Controls.Add(this.chk_StandardizeKeywords);
             this.flowLayoutPanel1.Controls.Add(this.chk_LowercaseTypeNames);
+            this.flowLayoutPanel1.Controls.Add(this.chk_AddMissingStatementTerminators);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // chk_ExpandCommaLists
@@ -173,6 +175,12 @@ namespace PoorMansTSqlFormatterPluginShared
             resources.ApplyResources(this.chk_StandardizeKeywords, "chk_StandardizeKeywords");
             this.chk_StandardizeKeywords.Name = "chk_StandardizeKeywords";
             this.chk_StandardizeKeywords.UseVisualStyleBackColor = true;
+            // 
+            // chk_LowercaseTypeNames
+            // 
+            resources.ApplyResources(this.chk_LowercaseTypeNames, "chk_LowercaseTypeNames");
+            this.chk_LowercaseTypeNames.Name = "chk_LowercaseTypeNames";
+            this.chk_LowercaseTypeNames.UseVisualStyleBackColor = true;
             // 
             // txt_IndentString
             // 
@@ -266,11 +274,11 @@ namespace PoorMansTSqlFormatterPluginShared
             resources.ApplyResources(this.lbl_ClauseBreaks, "lbl_ClauseBreaks");
             this.lbl_ClauseBreaks.Name = "lbl_ClauseBreaks";
             // 
-            // chk_LowercaseTypeNames
+            // chk_AddMissingStatementTerminators
             // 
-            resources.ApplyResources(this.chk_LowercaseTypeNames, "chk_LowercaseTypeNames");
-            this.chk_LowercaseTypeNames.Name = "chk_LowercaseTypeNames";
-            this.chk_LowercaseTypeNames.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.chk_AddMissingStatementTerminators, "chk_AddMissingStatementTerminators");
+            this.chk_AddMissingStatementTerminators.Name = "chk_AddMissingStatementTerminators";
+            this.chk_AddMissingStatementTerminators.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -340,5 +348,6 @@ namespace PoorMansTSqlFormatterPluginShared
 		private System.Windows.Forms.TextBox txt_ClauseBreaks;
 		private System.Windows.Forms.Label lbl_ClauseBreaks;
         private System.Windows.Forms.CheckBox chk_LowercaseTypeNames;
+        private System.Windows.Forms.CheckBox chk_AddMissingStatementTerminators;
     }
 }

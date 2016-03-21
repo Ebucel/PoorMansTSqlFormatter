@@ -105,6 +105,7 @@ namespace PoorMansTSqlFormatterDemo
             chk_Coloring.Checked = Properties.Settings.Default.StandardColoring;
             chk_EnableKeywordStandardization.Checked = Properties.Settings.Default.EnableKeywordStandardization;
             chk_LowercaseTypeNames.Checked = Properties.Settings.Default.LowercaseTypeNames;
+            chk_AddMissingStatementTerminators.Checked = Properties.Settings.Default.AddMissingStatementTerminators;
 
             radio_Formatting_Identity.Checked = Properties.Settings.Default.Formatter.Equals(FORMATTER_IDENTITY, StringComparison.InvariantCultureIgnoreCase);
             chk_IdentityColoring.Checked = Properties.Settings.Default.IdentityColoring;
@@ -152,6 +153,7 @@ namespace PoorMansTSqlFormatterDemo
             Properties.Settings.Default.StandardColoring = chk_Coloring.Checked;
             Properties.Settings.Default.EnableKeywordStandardization = chk_EnableKeywordStandardization.Checked;
             Properties.Settings.Default.LowercaseTypeNames = chk_LowercaseTypeNames.Checked;
+            Properties.Settings.Default.AddMissingStatementTerminators = chk_AddMissingStatementTerminators.Checked;
 
             if (radio_Formatting_Identity.Checked) Properties.Settings.Default.Formatter = FORMATTER_IDENTITY; 
             Properties.Settings.Default.IdentityColoring = chk_IdentityColoring.Checked;
@@ -189,7 +191,8 @@ namespace PoorMansTSqlFormatterDemo
 						KeywordStandardization = chk_EnableKeywordStandardization.Checked,
 						NewStatementLineBreaks = int.Parse(txt_StatementBreaks.Text),
 						NewClauseLineBreaks = int.Parse(txt_ClauseBreaks.Text),
-                        LowercaseTypeNames = chk_LowercaseTypeNames.Checked
+                        LowercaseTypeNames = chk_LowercaseTypeNames.Checked,
+                        AddMissingStatementTerminators = chk_AddMissingStatementTerminators.Checked,
 					});
             }
             else if (radio_Formatting_Identity.Checked)

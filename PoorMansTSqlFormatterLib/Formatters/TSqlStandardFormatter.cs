@@ -153,6 +153,19 @@ namespace PoorMansTSqlFormatterLib.Formatters
                 case SqlXmlConstants.ENAME_SQL_STATEMENT:
                     WhiteSpace_SeparateStatements(contentElement, state);
                     state.ResetKeywords();
+
+                    if (Options.AddMissingStatementTerminators)
+                    {
+                        XmlNodeList check = contentElement.SelectNodes(".//" + SqlXmlConstants.ENAME_SEMICOLON);
+                        if (check.Count == 0)
+                        {
+                            XmlNode lastClause = contentElement.LastChild;
+                            XmlElement terminator = contentElement.OwnerDocument.CreateElement(SqlXmlConstants.ENAME_SEMICOLON);
+                            terminator.InnerText = ";";
+                            lastClause.AppendChild(terminator);
+                        }
+                    }
+
                     ProcessSqlNodeList(contentElement.SelectNodes("*"), state);
                     state.StatementBreakExpected = true;
                     break;

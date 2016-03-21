@@ -370,5 +370,17 @@ namespace PoorMansTSqlFormatterDemo.Properties {
                 this["LowercaseTypeNames"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AddMissingStatementTerminators {
+            get {
+                return ((bool)(this["AddMissingStatementTerminators"]));
+            }
+            set {
+                this["AddMissingStatementTerminators"] = value;
+            }
+        }
     }
 }

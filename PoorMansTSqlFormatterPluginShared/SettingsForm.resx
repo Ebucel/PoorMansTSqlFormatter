@@ -480,6 +480,36 @@
   <data name="&gt;&gt;chk_LowercaseTypeNames.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="chk_AddMissingStatementTerminators.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chk_AddMissingStatementTerminators.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chk_AddMissingStatementTerminators.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 118</value>
+  </data>
+  <data name="chk_AddMissingStatementTerminators.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 17</value>
+  </data>
+  <data name="chk_AddMissingStatementTerminators.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="chk_AddMissingStatementTerminators.Text" xml:space="preserve">
+    <value>Add Missing Statement Terminators</value>
+  </data>
+  <data name="&gt;&gt;chk_AddMissingStatementTerminators.Name" xml:space="preserve">
+    <value>chk_AddMissingStatementTerminators</value>
+  </data>
+  <data name="&gt;&gt;chk_AddMissingStatementTerminators.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chk_AddMissingStatementTerminators.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;chk_AddMissingStatementTerminators.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 167</value>
   </data>

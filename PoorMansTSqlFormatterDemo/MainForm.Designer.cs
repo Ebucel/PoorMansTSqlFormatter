@@ -110,6 +110,7 @@ namespace PoorMansTSqlFormatterDemo
             this.frenchToolStripMenuItem = new PoorMansTSqlFormatterDemo.FrameworkClassReplacements.RadioToolStripMenuItem();
             this.spanishToolStripMenuItem = new PoorMansTSqlFormatterDemo.FrameworkClassReplacements.RadioToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chk_AddMissingStatementTerminators = new System.Windows.Forms.CheckBox();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -295,6 +296,7 @@ namespace PoorMansTSqlFormatterDemo
             // 
             // grp_Options
             // 
+            this.grp_Options.Controls.Add(this.chk_AddMissingStatementTerminators);
             this.grp_Options.Controls.Add(this.chk_LowercaseTypeNames);
             this.grp_Options.Controls.Add(this.chk_BreakJoinOnSections);
             this.grp_Options.Controls.Add(this.chk_ExpandInLists);
@@ -625,6 +627,13 @@ namespace PoorMansTSqlFormatterDemo
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // chk_AddMissingStatementTerminators
+            // 
+            resources.ApplyResources(this.chk_AddMissingStatementTerminators, "chk_AddMissingStatementTerminators");
+            this.chk_AddMissingStatementTerminators.Name = "chk_AddMissingStatementTerminators";
+            this.chk_AddMissingStatementTerminators.UseVisualStyleBackColor = true;
+            this.chk_AddMissingStatementTerminators.CheckedChanged += new System.EventHandler(this.FormatSettingsControlChanged);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -731,6 +740,7 @@ namespace PoorMansTSqlFormatterDemo
 		private System.Windows.Forms.TextBox txt_StatementBreaks;
 		private System.Windows.Forms.Label lbl_StatementBreaks;
         private System.Windows.Forms.CheckBox chk_LowercaseTypeNames;
+        private System.Windows.Forms.CheckBox chk_AddMissingStatementTerminators;
     }
 }
 
